@@ -9,7 +9,7 @@ from dotenv import load_dotenv
 from functools import wraps
 import logging
 
-# Configura o logging
+## Configura o logging
 logging.basicConfig(level=logging.INFO)
 log = logging.getLogger(__name__)
 
