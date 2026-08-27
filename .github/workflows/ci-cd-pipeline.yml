@@ -1,0 +1,19 @@
+name: CI/CD — flag-service
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  checks: write
+
+jobs:
+  ci:
+    uses: Pos-Tech-DevOps-DCLT/infra-tc3/.github/workflows/ci-cd-python-template.yaml@main
+    with:
+      project: flag-service
+    secrets: inherit
