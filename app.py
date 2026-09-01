@@ -9,6 +9,8 @@ from dotenv import load_dotenv
 from functools import wraps
 import logging
 
+# Teste do CD - Tech Challenge 3 Parte 4
+
 ## Configura o logging
 logging.basicConfig(level=logging.INFO)
 log = logging.getLogger(__name__)
