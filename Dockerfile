@@ -11,12 +11,14 @@ FROM python:3.11-slim
 
 WORKDIR /app
 
-COPY --from=builder /root/.local /root/.local
-COPY app.py .
+RUN addgroup --system appgroup && adduser --system --ingroup appgroup --home /home/appuser appuser
 
-ENV PATH=/root/.local/bin:$PATH
+COPY --from=builder --chown=appuser:appgroup /root/.local /home/appuser/.local
+COPY --chown=appuser:appgroup app.py .
 
-RUN addgroup --system appgroup && adduser --system --ingroup appgroup appuser
+ENV HOME=/home/appuser
+ENV PATH=/home/appuser/.local/bin:$PATH
+
 USER appuser
 
 EXPOSE 8002
